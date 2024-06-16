@@ -7,15 +7,29 @@ use App\Http\Controllers\TarjetaController;
 use App\Http\Controllers\ResumenController;
 use App\Http\Controllers\GastoController;
 
-
 Route::get('/', function () {
-    return view('welcome');
+    if (Auth::check()) {
+        return view('home');
+    }
+    return view('landing');
 });
 
+// Rutas de autenticación
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('entidades', EntidadController::class);
-Route::resource('tarjetas', TarjetaController::class);
-Route::resource('resumenes', ResumenController::class);
-Route::resource('gastos', GastoController::class);
+// Rutas protegidas por autenticación
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    // Rutas para Entidades
+    Route::resource('entidades', EntidadController::class);
+
+    // Rutas para Tarjetas
+    Route::resource('tarjetas', TarjetaController::class);
+
+    // Rutas para Resúmenes
+    Route::resource('resumenes', ResumenController::class);
+
+    // Rutas para Gastos
+    Route::resource('gastos', GastoController::class);
+});

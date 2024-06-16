@@ -7,3 +7,4 @@
 
 
 <script src="{{ URL::asset('build/js/app2.js') }}"></script>
+@yield('script')

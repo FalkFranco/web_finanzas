@@ -3,22 +3,32 @@
 
 <head>
     <meta charset="utf-8">
+    <title>@yield('title')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <meta content="Aplicación de finanzas personales" name="description">
+    <meta content="Falk Franco" name="author">
+    <link rel="shortcut icon" href="{{ URL::asset('build/img/logo.ico') }}">
     @include('partials.head')
 </head>
 
-<body>
+@yield('body')
+
+@auth
     @include('partials.navbar')
+@endauth
 
-    <div class="container">
-        @yield('content')
-    </div>
 
+
+@yield('content')
+
+
+@auth
     @include('partials.footer')
+@endauth
 
-    <!-- JAVASCRIPT -->
-    @include('partials.vendor-scripts')
-</body>
+
+<!-- JAVASCRIPT -->
+@include('partials.vendor-scripts')
+
 
 </html>

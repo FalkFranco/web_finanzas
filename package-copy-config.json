@@ -1,0 +1,6 @@
+{
+    "packagesToCopy": [
+        "bootstrap",
+        "swiper"
+    ]
+}

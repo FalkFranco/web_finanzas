@@ -13,22 +13,29 @@
 
 @yield('body')
 
-@auth
-    @include('partials.navbar')
-@endauth
+<body data-layout="horizontal">
 
+    <!-- Estructura para cuando esta logeado -->
+    @auth
+        <div id="layout-wrapper">
+            @include('partials.topbar')
+            @include('partials.sidebar')
 
+            <div class="main-content">
+                <div class="page-content">
+                    <div class="container-fluid">
+                        @yield('content')
+                    </div>
+                </div>
+                @include('partials.footer')
+            </div>
+        </div>
+    @endauth
 
-@yield('content')
+    <!-- Contenido de la pagina de incio "Landing" y el de inicio de sesion y registro  -->
+    @yield('content_landing')
 
-
-@auth
-    @include('partials.footer')
-@endauth
-
-
-<!-- JAVASCRIPT -->
-@include('partials.vendor-scripts')
-
+    <!-- JAVASCRIPT -->
+    @include('partials.vendor-scripts')
 
 </html>

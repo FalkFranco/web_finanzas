@@ -34,7 +34,8 @@
         border-right-color: transparent;
         padding: 0 calc(#{$grid-gutter-width} * 0.5);
         box-shadow: $horizontal-menu-box-shadow;
-        margin-top: $header-height;
+        // margin-top: $header-height;
+margin-bottom: $header-height;
         position: fixed;
         left: 0;
         right: 0;

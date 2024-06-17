@@ -13,6 +13,16 @@
 @import "variables-custom";
 @import "variables-dark";
 @import "node_modules/bootstrap/scss/mixins";
+// @import "structure/horizontal";
+
+// Structure
+@import "structure/topbar";
+@import "structure/page-head";
+@import "structure/footer";
+// @import "structure/vertical";
+@import "structure/horizontal";
+// @import "structure/two-column";
+@import "structure/layouts";
 
 // Bootstrap
 // @import 'bootstrap/scss/bootstrap';

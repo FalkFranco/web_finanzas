@@ -18,75 +18,75 @@ File: Main Js File
     var default_lang = "en"; // set Default Language
     var language = localStorage.getItem("language");
 
-    function initLanguage() {
-        // Set new language
-        language === null ? setLanguage(default_lang) : setLanguage(language);
-        var languages = document.getElementsByClassName("language");
-        languages &&
-            Array.from(languages).forEach(function (dropdown) {
-                dropdown.addEventListener("click", function (event) {
-                    setLanguage(dropdown.getAttribute("data-lang"));
-                });
-            });
-    }
+    // function initLanguage() {
+    //     // Set new language
+    //     language === null ? setLanguage(default_lang) : setLanguage(language);
+    //     var languages = document.getElementsByClassName("language");
+    //     languages &&
+    //         Array.from(languages).forEach(function (dropdown) {
+    //             dropdown.addEventListener("click", function (event) {
+    //                 setLanguage(dropdown.getAttribute("data-lang"));
+    //             });
+    //         });
+    // }
 
-    function setLanguage(lang) {
-        if (document.getElementById("header-lang-img")) {
-            if (lang == "en") {
-                document.getElementById("header-lang-img").src =
-                    "build/images/flags/us.svg";
-            } else if (lang == "sp") {
-                document.getElementById("header-lang-img").src =
-                    "build/images/flags/spain.svg";
-            } else if (lang == "gr") {
-                document.getElementById("header-lang-img").src =
-                    "build/images/flags/germany.svg";
-            } else if (lang == "it") {
-                document.getElementById("header-lang-img").src =
-                    "build/images/flags/italy.svg";
-            } else if (lang == "ru") {
-                document.getElementById("header-lang-img").src =
-                    "build/images/flags/russia.svg";
-            } else if (lang == "ch") {
-                document.getElementById("header-lang-img").src =
-                    "build/images/flags/china.svg";
-            } else if (lang == "fr") {
-                document.getElementById("header-lang-img").src =
-                    "build/images/flags/french.svg";
-            } else if (lang == "ar") {
-                document.getElementById("header-lang-img").src =
-                    "build/images/flags/ae.svg";
-            }
-            localStorage.setItem("language", lang);
-            language = localStorage.getItem("language");
-            getLanguage();
-        }
-    }
+    // function setLanguage(lang) {
+    //     if (document.getElementById("header-lang-img")) {
+    //         if (lang == "en") {
+    //             document.getElementById("header-lang-img").src =
+    //                 "build/img/flags/us.svg";
+    //         } else if (lang == "sp") {
+    //             document.getElementById("header-lang-img").src =
+    //                 "build/img/flags/spain.svg";
+    //         } else if (lang == "gr") {
+    //             document.getElementById("header-lang-img").src =
+    //                 "build/img/flags/germany.svg";
+    //         } else if (lang == "it") {
+    //             document.getElementById("header-lang-img").src =
+    //                 "build/img/flags/italy.svg";
+    //         } else if (lang == "ru") {
+    //             document.getElementById("header-lang-img").src =
+    //                 "build/img/flags/russia.svg";
+    //         } else if (lang == "ch") {
+    //             document.getElementById("header-lang-img").src =
+    //                 "build/img/flags/china.svg";
+    //         } else if (lang == "fr") {
+    //             document.getElementById("header-lang-img").src =
+    //                 "build/img/flags/french.svg";
+    //         } else if (lang == "ar") {
+    //             document.getElementById("header-lang-img").src =
+    //                 "build/img/flags/ae.svg";
+    //         }
+    //         localStorage.setItem("language", lang);
+    //         language = localStorage.getItem("language");
+    //         getLanguage();
+    //     }
+    // }
 
-    // Multi language setting
-    function getLanguage() {
-        language == null ? setLanguage(default_lang) : false;
-        var request = new XMLHttpRequest();
-        // Instantiating the request object
-        request.open("GET", "build/lang/" + language + ".json");
-        // Defining event listener for readystatechange event
-        request.onreadystatechange = function () {
-            // Check if the request is compete and was successful
-            if (this.readyState === 4 && this.status === 200) {
-                var data = JSON.parse(this.responseText);
-                Object.keys(data).forEach(function (key) {
-                    var elements = document.querySelectorAll(
-                        "[data-key='" + key + "']"
-                    );
-                    Array.from(elements).forEach(function (elem) {
-                        elem.textContent = data[key];
-                    });
-                });
-            }
-        };
-        // Sending the request to the server
-        request.send();
-    }
+    // // Multi language setting
+    // function getLanguage() {
+    //     language == null ? setLanguage(default_lang) : false;
+    //     var request = new XMLHttpRequest();
+    //     // Instantiating the request object
+    //     request.open("GET", "build/lang/" + language + ".json");
+    //     // Defining event listener for readystatechange event
+    //     request.onreadystatechange = function () {
+    //         // Check if the request is compete and was successful
+    //         if (this.readyState === 4 && this.status === 200) {
+    //             var data = JSON.parse(this.responseText);
+    //             Object.keys(data).forEach(function (key) {
+    //                 var elements = document.querySelectorAll(
+    //                     "[data-key='" + key + "']"
+    //                 );
+    //                 Array.from(elements).forEach(function (elem) {
+    //                     elem.textContent = data[key];
+    //                 });
+    //             });
+    //         }
+    //     };
+    //     // Sending the request to the server
+    //     request.send();
+    // }
 
     function pluginData() {
         /**
@@ -453,7 +453,7 @@ File: Main Js File
             }
             var ul = document.createElement("ul");
             ul.innerHTML =
-                '<a href="#" class="logo"><img src="build/images/logo-sm.png" alt="" height="22"></a>';
+                '<a href="#" class="logo"><img src="build/img/logo-sm.png" alt="" height="22"></a>';
             Array.from(
                 document
                     .getElementById("navbar-nav")
@@ -1475,7 +1475,7 @@ File: Main Js File
                             elem.innerHTML +=
                                 '<div class="empty-notification-elem">\
 							<div class="w-25 w-sm-50 pt-3 mx-auto">\
-								<img src="build/images/svg/bell.svg" class="img-fluid" alt="user-pic">\
+								<img src="build/img/svg/bell.svg" class="img-fluid" alt="user-pic">\
 							</div>\
 							<div class="text-center pb-5 mt-2">\
 								<h6 class="fs-18 fw-semibold lh-base">Hey! You have no any notifications </h6>\
@@ -2687,7 +2687,7 @@ File: Main Js File
             x.addEventListener("change", function () {
                 document.documentElement.setAttribute(ele, x.value);
                 sessionStorage.setItem(ele, x.value);
-                initLanguage();
+                // initLanguage();
 
                 if (ele == "data-layout-width" && x.value == "boxed") {
                     document.documentElement.setAttribute(
@@ -3079,9 +3079,9 @@ File: Main Js File
         initLeftMenuCollapse();
         initTopbarComponents();
         initComponents();
-        resetLayout();
+        // resetLayout();
         pluginData();
-        initLanguage();
+        // initLanguage();
         isCollapseMenu();
         initMenuItemScroll();
     }

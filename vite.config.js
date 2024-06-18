@@ -10,6 +10,23 @@ const folder = {
     dist: "public/", // archivos de construcción
     dist_assets: "public/build/", // archivos de activos de construcción
 };
+function getAllJsFiles(dir) {
+    const jsFiles = [];
+    const files = fs.readdirSync(dir);
+
+    files.forEach((file) => {
+        const filePath = path.join(dir, file);
+        const stat = fs.statSync(filePath);
+
+        if (stat.isDirectory()) {
+            jsFiles.push(...getAllJsFiles(filePath)); // Recurse into subdirectory
+        } else if (filePath.endsWith(".js")) {
+            jsFiles.push(filePath); // Add .js file to the list
+        }
+    });
+
+    return jsFiles;
+}
 
 export default defineConfig({
     plugins: [
@@ -20,6 +37,7 @@ export default defineConfig({
                 "resources/sass/custom.scss",
                 "resources/js/app.js",
                 "resources/sass/icons.scss",
+                ...getAllJsFiles("resources/js"),
             ],
             refresh: true,
         }),

@@ -1,8 +1,16 @@
 {
     "packagesToCopy": [
+        "axios",
         "apexcharts",
         "bootstrap",
         "simplebar",
+        "jquery",
+        "toastify-js",
+        "flatpickr",
+        "choices.js",
+        "feather-icons",
+        "node-waves",
+        "datatables.net-dt",
         "swiper"
     ]
 }

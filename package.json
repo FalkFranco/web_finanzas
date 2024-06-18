@@ -9,7 +9,7 @@
     "devDependencies": {
         "@popperjs/core": "^2.11.6",
         "@vitejs/plugin-vue": "^4.5.0",
-        "axios": "^1.6.4",
+        "axios": "^1.7.2",
         "bootstrap": "^5.2.3",
         "laravel-vite-plugin": "^1.0",
         "sass": "^1.56.1",
@@ -19,12 +19,18 @@
     "dependencies": {
         "apexcharts": "^3.49.1",
         "bootstrap": "^5.3.3",
-        "datatables.net-dt": "^2.0.7",
+        "choices.js": "^10.2.0",
+        "datatables.net-dt": "^2.0.8",
+        "feather-icons": "^4.29.2",
+        "flatpickr": "^4.6.13",
         "fs-extra": "^11.2.0",
+        "jquery": "^3.7.1",
+        "node-waves": "^0.7.6",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
         "resize-observer-polyfill": "^1.5.1",
         "simplebar": "^6.2.7",
-        "swiper": "^11.1.4"
+        "swiper": "^11.1.4",
+        "toastify-js": "^1.12.0"
     }
 }

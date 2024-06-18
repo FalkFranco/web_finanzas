@@ -1,40 +1,41 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <h1>Entidades</h1>
-        <a href="{{ route('entidades.create') }}" class="btn btn-primary">Crear Entidad</a>
-        @if (session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
-        @endif
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Tipo</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($entidades as $entidad)
+    <div class="card">
+        <div class="card-header">
+            <h1>Entidades</h1>
+        </div>
+        <div class="card-body">
+            <a href="{{ route('entidades.create') }}" class="btn btn-primary">Crear Entidad</a>
+            @if (session('success'))
+                <div class="alert alert-success">{{ session('success') }}</div>
+            @endif
+
+            <table id="datatable-entidades"
+                class="table table-bordered dt-responsive nowrap table-striped align-middle table-sm">
+                <thead>
                     <tr>
-                        <td>{{ $entidad->id }}</td>
-                        <td>{{ $entidad->nombre }}</td>
-                        <td>{{ $entidad->tipoEntidad->nombre }}</td>
-                        <td>
-                            <a href="{{ route('entidades.show', $entidad->id) }}" class="btn btn-info">Ver</a>
-                            <a href="{{ route('entidades.edit', $entidad->id) }}" class="btn btn-warning">Editar</a>
-                            <form action="{{ route('entidades.destroy', $entidad->id) }}" method="POST"
-                                style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Eliminar</button>
-                            </form>
-                        </td>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Tipo</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
     </div>
+@endsection
+@section('script')
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+    <script src="{{ URL::asset('build/js/pages/entidades.js') }}"></script>
+    {{-- <script src="{{ URL::asset('build/js/app.js') }}"></script> --}}
 @endsection

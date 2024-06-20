@@ -10,6 +10,7 @@ class Entidad extends Model
     use HasFactory;
     protected $fillable = ['nombre', 'tipo_entidad_id', 'user_id'];
     protected $table = 'entidades'; // Nombre de la tabla en la base de datos
+
     // Relación con TipoEntidad
     public function tipoEntidad()
     {

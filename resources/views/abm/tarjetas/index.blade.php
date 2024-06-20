@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Entidades')
+@section('title', 'Tarjetas')
 @section('content')
     <div class="card">
         <div class="card-header d-flex justify-content-between">
-            <h3>Entidades</h3>
+            <h3>Tarjetas</h3>
             <button class="btn btn-info add-btn" data-bs-toggle="modal" data-bs-target="#modalAltaEntidad"><i
                     class="ri-add-fill me-1 align-bottom"></i> Crear Entidad</button>
         </div>
@@ -13,7 +13,7 @@
                 <div class="alert alert-success">{{ session('success') }}</div>
             @endif
 
-            <table id="datatable-entidades"
+            <table id="datatable_tarjetas"
                 class="table table-bordered dt-responsive nowrap table-striped align-middle table-sm">
                 <thead>
                     <tr>
@@ -29,8 +29,8 @@
             </table>
         </div>
     </div>
-    @include('abm.entidades.create')
+    {{-- @include('abm.entidades.create') --}}
 @endsection
 @section('script')
-    <script src="{{ URL::asset('build/js/pages/entidades.js') }}"></script>
+    <script src="{{ URL::asset('build/js/pages/tarjetas.js') }}"></script>
 @endsection

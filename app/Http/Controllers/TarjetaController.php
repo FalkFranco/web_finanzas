@@ -13,8 +13,8 @@ class TarjetaController extends Controller
     public function index()
     {
         //
-        // $tarjjeta = Tarjeta::all();
-        // return view('abm.tarjetas.index', compact('tarjetas'));
+        $tarjetas = Tarjeta::all();
+        return view('abm.tarjetas.index', compact('tarjetas'));
     }
 
     /**

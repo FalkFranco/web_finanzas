@@ -111,11 +111,14 @@
                     </a>
                     <div class="collapse menu-dropdown" id="sidebarDashboards">
                         <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a href="dashboard-analytics" class="nav-link">Lista de Tarjetas</a>
+                            </li> --}}
+                            <li class="nav-item">
+                                <a href="tarjetas" class="nav-link">Administrar Tarjetas</a>
                             </li>
                             <li class="nav-item">
-                                <a href="dashboard-crm" class="nav-link">Administrar Tarjetas</a>
+                                <a href="resumenes" class="nav-link">Resumenes</a>
                             </li>
                             <li class="nav-item">
                                 <a href="index" class="nav-link">Historial de Transacciones de Tarjetas</a>

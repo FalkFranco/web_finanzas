@@ -5,12 +5,14 @@
         "bootstrap",
         "simplebar",
         "jquery",
+        "jquery-ui",
         "toastify-js",
         "flatpickr",
         "choices.js",
         "feather-icons",
         "node-waves",
-        "datatables.net-dt",
         "swiper"
     ]
 }
+
+        

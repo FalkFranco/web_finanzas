@@ -1,17 +1,17 @@
 $(function () {
-    var datatable_entidades = $("#datatable-entidades");
+    var datatable_tarjetas = $("#datatable_tarjetas");
 
     axios
-        .get("/api/entidades")
+        .get("/api/tarjetas")
         .then((response) => {
-            // console.log("Entidades obtenidas:", response.data);
-            datatable_entidades.DataTable({
+            console.log("Entidades obtenidas:", response.data);
+            datatable_tarjetas.DataTable({
                 data: response.data,
                 columns: [
                     { data: "id" },
-                    { data: "nombre" },
-                    { data: "tipo_entidad_id" },
-                    { data: "created_at" },
+                    { data: "descripcion" },
+                    { data: "entidad.nombre" },
+                    { data: "estado" },
                     {
                         data: null,
                         render: function (data) {

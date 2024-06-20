@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Resumen;
 
 class ResumenController extends Controller
 {
@@ -12,6 +13,8 @@ class ResumenController extends Controller
     public function index()
     {
         //
+        $resumenes = Resumen::all();
+        return view('abm.resumenes.index', compact('resumenes'));
     }
 
     /**

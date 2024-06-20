@@ -1,17 +1,24 @@
 $(function () {
-    var datatable_entidades = $("#datatable-entidades");
+    var datatable_resumenes = $("#datatable_resumenes");
 
     axios
-        .get("/api/entidades")
+        .get("/api/resumenes")
         .then((response) => {
-            // console.log("Entidades obtenidas:", response.data);
-            datatable_entidades.DataTable({
+            console.log("Entidades obtenidas:", response.data);
+            datatable_resumenes.DataTable({
                 data: response.data,
                 columns: [
                     { data: "id" },
-                    { data: "nombre" },
-                    { data: "tipo_entidad_id" },
-                    { data: "created_at" },
+                    // { data: "tarjeta.descripcion" },
+                    {
+                        data: null,
+                        render: function (data) {
+                            return `Resumen de ${data.tarjeta.entidad.nombre} `;
+                        },
+                    },
+                    { data: "fecha_inicio" },
+                    { data: "fecha_vencimiento" },
+                    { data: "estado" },
                     {
                         data: null,
                         render: function (data) {

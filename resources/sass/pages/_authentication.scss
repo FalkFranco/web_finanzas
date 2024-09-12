@@ -1,141 +1,100 @@
-//
-// _authentication.scss
-//
-
-
-.auth-page-wrapper{
-    .auth-page-content{
-        padding-bottom: $footer-height;
-        position: relative;
-        z-index: 2;
-        width: 100%;
+.login{
+    .textWhite {
+        color: white;
     }
-    .footer{
-        left: 0;
+    .textGrey {
+        color: #8e8e8e;
+    }
+    .textPrimary {
+        color: #c55201;
+    }
+
+    .formControlCustom {
         background-color: transparent;
-        color: var(--#{$prefix}body-color);
+        color: #c3c3c3;
+        border-color: #8e8e8e;
+        padding: 10px;
+        border-radius: 15px;
     }
-}
-
-.auth-one-bg-position{
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 380px;
-    
-    @media (max-width: 575.98px) {
-        height: 280px;
+    .formControlCustom:focus {
+        background-color: transparent;
+        border-color: #8e8e8e;
+        color: white;
     }
-}
-
-.auth-one-bg{
-    background-image: url("../images/auth-one-bg.jpg");
-    background-position: center;
-    background-size: cover;
-
-    .bg-overlay{
-        background: linear-gradient(to right, darken($primary, 6%), $primary);
-        opacity: 0.9;
+    .formControlCustom::placeholder {
+        color: #8e8e8e;
+        font-size: 17px;
     }
-}
-
-.shape{
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    z-index: 1;
-    pointer-events: none;
-    >svg {
-        width: 100%;
-        height: auto;
-        fill: var(--#{$prefix}body-bg);
+    .bgBlack {
+        background-color: #121519;
     }
-}
+    .btnLogin {
+        background-color: #c55201;
+        color: white;
+        border: none;
+        padding: 13px 20px;
+        border-radius: 15px;
+        cursor: pointer;
+    }
+    .btnLogin:hover {
+        background-color: #9c4100;
+    }
+    /* Estilo general para el contenedor */
+    .container {
+        max-width: 100%; /* Asegúrate de que el contenedor no exceda el ancho de la pantalla */
+        padding: 0 30px; /* Agrega un relleno a los lados del contenedor */
+    }
 
-// auth-pass-inputgroup
-
-.auth-pass-inputgroup{
-    input[type="text"] + .btn .ri-eye-fill{
-        &:before{
-            content: "\ecb6";
+    /* Para pantallas de 768px en adelante */
+    @media (min-width: 768px) {
+        .container {
+            max-width: 700px;
         }
     }
-}
 
-.particles-js-canvas-el{
-    position: relative;
-}
+    /* Para pantallas de 992px en adelante */
+    @media (min-width: 992px) {
+        .container {
+            max-width: 900px;
+        }
+    }
 
-// signin card title
+    /* Para pantallas de 1200px en adelante */
+    @media (min-width: 1200px) {
+        .container {
+            max-width: 1200px;
+        }
+    }
 
-.signin-other-title{
-    position: relative;
-    &:after{
+    /* Para pantallas de 1400px en adelante */
+    @media (min-width: 1400px) {
+        .container {
+            max-width: 700px;
+        }
+    }
+
+    .imageContainer {
+        position: relative;
+        width: 50%;
+        height: 100%;
+    }
+
+    .imageContainer::before {
         content: "";
         position: absolute;
-        width: 100%;
-        height: 1px;
+        top: 0;
         left: 0;
-        right: 0;
-        border-top: 1px dashed var(--#{$prefix}border-color);
-        top: 10px;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* Color negro con opacidad (ajusta el valor de opacidad según tus necesidades) */
+        pointer-events: none; /* Asegura que el pseudo-elemento no interfiera con los eventos del usuario */
+        z-index: 1; /* Asegura que la capa oscura esté sobre la imagen */
     }
 
-    .title{
-        display: inline-block;
-        position: relative;
-        z-index: 9;
-        background-color: var(--#{$prefix}secondary-bg);
-        padding: 2px 16px;
-    }
-}
-
-// Auth cover
-
-.auth-bg-cover{
-    background: $auth-bg-cover;
-
-    > .bg-overlay{
-        background-image: url("../images/cover-pattern.png");
-        background-position: center;
-        background-size: cover;
-        opacity: 1;
-        background-color: transparent;
-    }
-
-    .footer{
-        color: rgba($white, .5);
-    }
-}
-
-//passowrd validations 
-#password-contain {
-    display: none;
-
-    p {
-        padding-left: 13px;
-
-        &.valid {
-            color: $success;
-
-            &::before {
-                position: relative;
-                left: -8px;
-                content: "✔";
-            }
-        }
-
-        &.invalid {
-            color: $danger;
-
-            &::before {
-                position: relative;
-                left: -8px;
-                content: "✖";
-            }
-        }
+    .fullWidthHeight {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Asegura que la imagen cubra todo el contenedor sin distorsionarse */
+        z-index: 0; /* Asegura que la imagen esté debajo de la capa oscura */
     }
 }

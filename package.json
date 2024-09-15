@@ -26,6 +26,7 @@
         "jquery": "^3.7.1",
         "jquery-ui": "^1.13.3",
         "jszip": "^3.10.1",
+        "moment": "^2.30.1",
         "node-waves": "^0.7.6",
         "pdfmake": "^0.2.10",
         "react": "^18.3.1",

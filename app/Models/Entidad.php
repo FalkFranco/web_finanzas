@@ -1,4 +1,5 @@
 <?php
+// app/Models/Entidad.php
 
 namespace App\Models;
 
@@ -21,5 +22,11 @@ class Entidad extends Model
     public function tarjetas()
     {
         return $this->hasMany(Tarjeta::class);
+    }
+
+    public function getData()
+    {
+        $entidades = Entidad::with('tipoEntidad')->get(); // Asegúrate de incluir la relación
+        return response()->json($entidades);
     }
 }

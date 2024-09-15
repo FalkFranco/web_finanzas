@@ -1,36 +1,54 @@
 $(function () {
     var datatable_entidades = $("#datatable-entidades");
 
-    axios
-        .get("/api/entidades")
-        .then((response) => {
-            // console.log("Entidades obtenidas:", response.data);
-            datatable_entidades.DataTable({
-                data: response.data,
-                columns: [
-                    { data: "id" },
-                    { data: "nombre" },
-                    { data: "tipo_entidad_id" },
-                    { data: "created_at" },
-                    {
-                        data: null,
-                        render: function (data) {
-                            return `<div class="d-flex justify-content-center gap-2 column-gap-0">
-                                            <button id="btnVer" class="btn bg-gradient waves-effect waves-light btn-info py-1 px-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Ver" ><i class="ri-eye-line"></i></button>
-                                            <button id="btnModificar" class="btn bg-gradient waves-effect waves-light btn-primary py-1 px-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Modificar" ><i class="ri-pencil-line"></i></button>
-                                            <button id="btnConfirmar" class="btn bg-gradient waves-effect waves-light btn-success py-1 px-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Cerrar Fondo Fijo" ><i class="ri-shield-check-line"></i></button>
-                                            <button id="btnEliminar" class="btn bg-gradient waves-effect waves-light btn-danger py-1 px-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" ><i class="ri-delete-bin-2-line"></i></button>
-                                        </div>`;
-                        },
-                    },
-                ],
-                language: {
-                    url: "build/json/Spanish.json",
+    datatable_entidades.DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: {
+            url: "/entidades/data",
+            type: "GET",
+        },
+        columns: [
+            { data: "id", name: "id" },
+            { data: "nombre", name: "nombre" },
+            { data: "tipo_entidad.nombre", name: "tipo_entidad.nombre" },
+            {
+                data: "created_at",
+                name: "created_at",
+                render: function (data) {
+                    try {
+                        return moment(data).format("DD/MM/YYYY HH:mm");
+                    } catch (error) {
+                        console.error("Error formatting date:", error);
+                        return data;
+                    }
                 },
-                responsive: true,
-            });
-        })
-        .catch((error) => {
-            console.error("Error al obtener entidades:", error);
-        });
+            },
+            {
+                data: "action",
+                name: "action",
+                orderable: false,
+                searchable: false,
+            },
+        ],
+        language: {
+            url: "build/json/Spanish.json",
+        },
+        responsive: true,
+    });
 });
+
+function verEntidad(id) {
+    // Implementar lógica para ver entidad
+    console.log("Ver entidad con ID:", id);
+}
+
+function editarEntidad(id) {
+    // Implementar lógica para editar entidad
+    console.log("Editar entidad con ID:", id);
+}
+
+function eliminarEntidad(id) {
+    // Implementar lógica para eliminar entidad
+    console.log("Eliminar entidad con ID:", id);
+}

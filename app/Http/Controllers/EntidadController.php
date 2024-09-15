@@ -2,80 +2,55 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Entidad;
+use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class EntidadController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-
-
     public function index()
     {
-        //
-        $entidades = Entidad::all(); // Obtener todas las entidades
-        return view('abm.entidades.index', compact('entidades')); // Pasar las entidades a la vista
+        return view('abm.entidades.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    public function getData(Request $request)
+    {
+        $entidades = Entidad::with('tipoEntidad');
+
+        return DataTables::of($entidades)
+            ->addColumn('action', function ($entidad) {
+                return view('abm.entidades.action_buttons', compact('entidad'))->render();
+            })
+            ->filterColumn('tipo_entidad.nombre', function ($query, $keyword) {
+                $query->whereHas('tipoEntidad', function ($q) use ($keyword) {
+                    $q->where('nombre', 'like', "%{$keyword}%");
+                });
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+    }
     public function create()
     {
-        //
-        return view('abm.entidades.create'); // Mostrar el formulario de creación
+        // Implementar lógica para mostrar formulario de creación
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
-        request()->validate([ // Validar los campos
-            'nombre' => 'required|string|max:255',
-            'tipo_entidad_id' => 'required|exists:tipo_entidades,id',
-        ]);
-
-        Entidad::create($request->all()); // Crear la entidad
-        return redirect()->route('abm.entidades.index'); // Redireccionar a la lista de entidades
+        // Implementar lógica para guardar una nueva entidad
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function edit($id)
     {
-        //
-        return view('abm.entidades.show', compact('entidad')); // Pasar la entidad a la vista
+        // Implementar lógica para mostrar formulario de edición
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function update(Request $request, $id)
     {
-        //
-        return view('abm.entidades.edit', compact('entidad')); // Pasar la entidad a la vista
+        // Implementar lógica para actualizar una entidad
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function destroy($id)
     {
-        //
-
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-
+        // Implementar lógica para eliminar una entidad
     }
 }

@@ -11,7 +11,8 @@
         "choices.js",
         "feather-icons",
         "node-waves",
-        "swiper"
+        "swiper",
+        "moment"
     ]
 }
 
